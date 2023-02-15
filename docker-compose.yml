@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  dbpostgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=kajlo_store
+      - POSTGRES_USERNAME=${PG_USERNAME}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    ports:
+      - 5433:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - 5050:80
